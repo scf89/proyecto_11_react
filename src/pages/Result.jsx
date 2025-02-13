@@ -11,7 +11,7 @@ import { Point, LineString } from "ol/geom";
 import { Style, Fill, Stroke, Circle as CircleStyle } from "ol/style";
 import { Vector as VectorLayer } from "ol/layer";
 import { Vector as VectorSource } from "ol/source";
-import StadiaMaps from 'ol/source/StadiaMaps.js';
+import XYZ from 'ol/source/XYZ.js';
 
 const Result = () => {
   const { city, lat, lng, guessLat, guessLng } = useParams();
@@ -78,8 +78,9 @@ const Result = () => {
       target: mapRef.current,
       layers: [
         new TileLayer({
-          source: new StadiaMaps({
-            layer: 'stamen_terrain_background',
+          source: new XYZ({
+            url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+            attributions: '&copy; <a href="https://www.esri.com/">Esri</a>'
           }),
         }),
         new VectorLayer({

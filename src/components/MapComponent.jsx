@@ -4,7 +4,7 @@ import Map from "ol/Map";
 import View from "ol/View";
 import { Tile as TileLayer } from "ol/layer";
 import { fromLonLat, toLonLat } from "ol/proj";
-import StadiaMaps from 'ol/source/StadiaMaps.js';
+import XYZ from 'ol/source/XYZ.js';
 
 const MapComponent = ({ capital, onGuess }) => {
   const mapRef = useRef();
@@ -14,8 +14,9 @@ const MapComponent = ({ capital, onGuess }) => {
       target: mapRef.current,
       layers: [
         new TileLayer({ 
-          source: new StadiaMaps({
-          layer: 'stamen_terrain_background',
+          source: new XYZ({
+            url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+            attributions: '&copy; <a href="https://www.esri.com/">Esri</a>'
           }),
        }),
       ],
