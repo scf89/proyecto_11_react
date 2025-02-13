@@ -23,7 +23,7 @@ const Game = () => {
 
   return (
     <div className="container">
-      <h2>📍 ¿Dónde está {capital?.name}?</h2>
+      <h2>📍 ¿Dónde está {capital?.name} ({capital.country})?</h2>
       {capital && <MapComponent capital={capital} onGuess={handleGuess} />}
     </div>
   );
